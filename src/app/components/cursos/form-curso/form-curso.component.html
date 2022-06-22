@@ -3,7 +3,7 @@
         <div class="col-6 border border-light rounded p-5 shadow mt-5" >
             <h6>Novo Curso</h6>
             <hr>
-            <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()">
+            <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Nome do Curso</label>
                     <div class="col-sm-10">
@@ -22,8 +22,6 @@
                     <input type="text" class="fomr-control form-control-sm" formControlName="descricao" />
                 </div>
                 </div>
-                
-                
                 <div class="row mb-3">
                     <div class="row">
                         <div class="col-2">

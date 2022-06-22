@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Curso } from '../models/curso.model';
 
@@ -14,7 +14,6 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class CursosService {
-//
    url = 'https://localhost:7163/api/Cursos';
    urlConteudo = 'https://localhost:7163/api/conteudos';
    urlUsuario = 'https://localhost:7163/api/usuarios';
@@ -23,6 +22,10 @@ export class CursosService {
 
   obterTodos():Observable<Curso[]>{
     return this.http.get<Curso[]>(this.url);
+  }
+
+  obterPorId(id:number):Observable<Curso>{
+    return this.http.get<Curso>(`${this.url}/${id}`);
   }
 
   deletar(id:number): Observable<any>{
@@ -34,7 +37,7 @@ export class CursosService {
   } 
 
   atualizar(c: Curso): Observable<any> {
-    return this.http.put<Curso>(this.url, c, httpOptions);
+    return this.http.put<Curso>(`${this.url}/${c.cursoId}`, c, httpOptions);
   } 
 
 

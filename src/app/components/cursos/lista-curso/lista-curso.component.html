@@ -19,7 +19,7 @@
             <td>{{ curso.cursoNome }}</td>
             <td>{{ curso.descricao }}</td>
             <td>
-                <button>Editar</button>
+                <button [routerLink]="['curso/editar',curso.cursoId]">Editar</button>
                 <button (click)="abrirModal(modalConfirmacaoDeletar,curso.cursoId)">Deletar</button>
             </td>
         </tr>
