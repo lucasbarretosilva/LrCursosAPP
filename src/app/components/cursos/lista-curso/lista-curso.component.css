@@ -1,0 +1,20 @@
+img{
+    height: 60px;
+    width: 90px;
+}
+
+h1{
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.close{
+    border: none;
+    background-color: #fff;
+    font-size: 30px;
+}
+
+.container-botao-add{
+    float: right;
+    margin-bottom: 20px;
+}
