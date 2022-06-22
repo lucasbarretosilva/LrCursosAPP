@@ -15,9 +15,9 @@ const httpOptions = {
 })
 export class CursosService {
 //
-  private url = 'https://localhost:7163/api/Cursos';
-  private urlConteudo = 'https://localhost:7163/api/conteudos';
-  private urlUsuario = 'https://localhost:7163/api/usuarios';
+   url = 'https://localhost:7163/api/Cursos';
+   urlConteudo = 'https://localhost:7163/api/conteudos';
+   urlUsuario = 'https://localhost:7163/api/usuarios';
 
   constructor(private http: HttpClient) {}
 

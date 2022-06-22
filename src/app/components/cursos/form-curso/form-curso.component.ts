@@ -15,11 +15,11 @@ export class FormCursoComponent implements OnInit {
   constructor(private cursosService: CursosService ) { }
 
   ngOnInit(): void {
-    
-  }
+    this.cursosService
+    .obterTodos()
+    .subscribe((resultado) => (this.cursos = resultado));
 
-  EnviarFormulario(): void {
-    //criar as variaveis para ter os dados do form
+
     this.formulario = new FormGroup({
       //  forms controle são os inputs
       cursoNome: new FormControl(null),
@@ -27,6 +27,18 @@ export class FormCursoComponent implements OnInit {
       descricao: new FormControl(null),
       
     });
+    
+  }
+
+  EnviarFormulario(): void {
+    //criar as variaveis para ter os dados do form
+    // this.formulario = new FormGroup({
+    //   //  forms controle são os inputs
+    //   cursoNome: new FormControl(null),
+    //   imagemUrl: new FormControl(null),
+    //   descricao: new FormControl(null),
+      
+    // });
   
 
     const curso: Curso = this.formulario.value;
