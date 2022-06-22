@@ -29,4 +29,13 @@ export class CursosService {
     return this.http.delete<any>(`${this.url}/${id}`);
   }
 
+  salvar(c: Curso): Observable<any> {
+    return this.http.post<Curso>(this.url, c, httpOptions);
+  } 
+
+  atualizar(c: Curso): Observable<any> {
+    return this.http.put<Curso>(this.url, c, httpOptions);
+  } 
+
+
 }
