@@ -3,4 +3,5 @@ export class Curso{
     cursoNome: string = '';
     imagemUrl: string = '';
     descricao: string = '';
+    duracao: string = '';
 } 
