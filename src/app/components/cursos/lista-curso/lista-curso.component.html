@@ -1,41 +1,45 @@
-<h1>Cursos</h1>
-<div class="container-botao-add">
-    <button class="btn btn-primary" routerLink="curso/adicionar">Adicionar</button>
-</div>
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Descrição</th>
-            <th scope="col">Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let curso of cursos">
-            <td>
-                <img [src]="curso.imagemUrl" />
-            </td>
-            <td>{{ curso.cursoNome }}</td>
-            <td>{{ curso.descricao }}</td>
-            <td>
-                <button [routerLink]="['curso/editar',curso.cursoId]">Editar</button>
-                <button (click)="abrirModal(modalConfirmacaoDeletar,curso.cursoId)">Deletar</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+
+    <h1>Cursos</h1>
+    <div class="container-botao-add">
+        <button class="btn btn-secondary" routerLink="curso/adicionar">Adicionar</button>
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let curso of cursos">
+                <td>
+                    <img [src]="curso.imagemUrl" />
+                </td>
+                <td>{{ curso.cursoNome }}</td>
+                <td>{{ curso.descricao }}</td>
+                <td>
+                    <a [routerLink]="['curso/editar',curso.cursoId]" class="icon icon-edit bi bi-pencil-square"></a>
+                    <a (click)="abrirModal(modalConfirmacaoDeletar,curso.cursoId)"
+                        class=" icon icon-delete bi bi-trash-fill"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 
 <ng-template #modalConfirmacaoDeletar let-modal>
     <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">Atenção</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"
             (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        This is example from ItSolutionStuff.com
+        Você tem certeza que deseja deletar este registro?
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"

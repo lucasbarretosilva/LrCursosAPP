@@ -1,1 +1,14 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+@import '~ngx-toastr/toastr';
+
+.container-botao-add{
+    float: right;
+    margin-bottom: 20px;
+}
+
+button {
+    float: right;
+    border-radius: 30px !important;
+    width: 100px !important;
+    margin-left: 5px !important;
+}

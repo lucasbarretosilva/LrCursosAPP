@@ -2,6 +2,7 @@ import { CursosService } from '../../../services/cursos.service';
 import { Component, OnInit } from '@angular/core';
 import { Curso } from 'src/app/models/curso.model';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-lista-curso',
@@ -17,7 +18,7 @@ export class ListaCursoComponent implements OnInit {
 
   cursos: Curso[] = [];
   
-  constructor(private cursoService: CursosService, private modalService: NgbModal) { }
+  constructor(private cursoService: CursosService, private modalService: NgbModal, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.obterTodos();
@@ -29,19 +30,18 @@ export class ListaCursoComponent implements OnInit {
         this.cursos = resposta;
       },
       (error)=>{
-        //inserir toaster de erro
+        this.toastr.error('Ocorreu um erro', 'Atenção!');
       }
     )
   }
-
   deletar(id:number):void{
     this.cursoService.deletar(id).subscribe(
       ()=>{
-        //inserir toaster
+        this.toastr.success('', 'Registro Deletado!');
         this.obterTodos();
       },
       (error)=>{
-         //inserir toaster de erro
+        this.toastr.error('Ocorreu um erro', 'Atenção!');
       }
     )
   }

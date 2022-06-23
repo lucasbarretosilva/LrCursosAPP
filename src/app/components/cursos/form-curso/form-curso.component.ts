@@ -3,6 +3,7 @@ import { Curso } from 'src/app/models/curso.model';
 import { CursosService } from 'src/app/services/cursos.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form-curso',
@@ -17,7 +18,8 @@ export class FormCursoComponent implements OnInit {
   constructor(
     private cursosService: CursosService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
     ) {
     this.formulario = new FormGroup({
       cursoNome: new FormControl(null),
@@ -48,8 +50,9 @@ export class FormCursoComponent implements OnInit {
         this.router.navigate(['']);
       });
     } else {
-      this.cursosService.salvar(curso).subscribe(() => {
-        this.router.navigate(['']);
+      this.cursosService.salvar(curso).subscribe((resposta) => {
+        this.id = resposta.cursoId;
+        this.toastr.success('Cadastro Realizado! Clique em Conteúdos para continuar o cadastro ', 'Sucesso!');
       });
     }
   }

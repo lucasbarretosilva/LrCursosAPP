@@ -10,20 +10,26 @@ import { FormCursoComponent } from './components/cursos/form-curso/form-curso.co
 import { ListaCursoComponent } from './components/cursos/lista-curso/lista-curso.component';
 import { CursosService } from './services/cursos.service';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { ListaConteudosComponent } from './components/conteudos/lista-conteudos/lista-conteudos.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ListaCursoComponent,
-    FormCursoComponent
+    FormCursoComponent,
+    ListaConteudosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [HttpClientModule, CursosService],
   bootstrap: [AppComponent]

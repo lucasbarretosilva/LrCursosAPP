@@ -15,7 +15,6 @@ const httpOptions = {
 })
 export class CursosService {
    url = 'https://localhost:7163/api/Cursos';
-   urlConteudo = 'https://localhost:7163/api/conteudos';
    urlUsuario = 'https://localhost:7163/api/usuarios';
 
   constructor(private http: HttpClient) {}

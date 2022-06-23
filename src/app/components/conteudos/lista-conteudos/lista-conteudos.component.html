@@ -1,0 +1,77 @@
+<h4 class="mt-5">Conteúdos</h4>
+<hr>
+<div class="container-botao-add">
+    <button class="btn btn-secondary" (click)="abrirModal(modalSalvarConteudo)">Adicionar</button>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Url</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let conteudo of conteudos">
+
+            <td>{{ conteudo.tituloAula }}</td>
+            <td>{{ conteudo.urlAula }}</td>
+            <td>
+                <a class="icon icon-edit bi bi-pencil-square"
+                    (click)="abrirModalEdicao(modalSalvarConteudo, conteudo)"></a>
+                <a class="icon icon-delete bi bi-trash-fill"
+                    (click)="abrirModalDeletar(modalConfirmacaoDeletar,conteudo.conteudoId)"></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<ng-template #modalSalvarConteudo let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">Dados Conteúdo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="formulario" class="mt-5">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Título</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm" formControlName="tituloAula" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Url</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm" formControlName="urlAula" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Salvar</button>
+    </div>
+</ng-template>
+
+<ng-template #modalConfirmacaoDeletar let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">Atenção</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        Você tem certeza que deseja deletar este registro?
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            (click)="modal.dismiss('Cross click')">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Confirmar</button>
+    </div>
+</ng-template>
