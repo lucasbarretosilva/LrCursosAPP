@@ -1,0 +1,14 @@
+.icon{
+    font-size: 25px;
+    padding-left: 5px;
+    cursor:pointer;
+}
+
+.icon-delete{
+    color: #f82249;
+}
+
+.icon-edit{
+    color: #132f59d9;
+}
+

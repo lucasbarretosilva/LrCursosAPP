@@ -13,6 +13,9 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { ListaConteudosComponent } from './components/conteudos/lista-conteudos/lista-conteudos.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './components/home/home.component';
+import { ListaConteudosUsuarioComponent } from './components/conteudos/lista-conteudos-usuario/lista-conteudos-usuario.component';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     ListaCursoComponent,
     FormCursoComponent,
-    ListaConteudosComponent
+    ListaConteudosComponent,
+    HomeComponent,
+    ListaConteudosUsuarioComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

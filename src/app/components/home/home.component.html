@@ -1,0 +1,12 @@
+<div class="container">
+<div *ngFor="let curso of cursos">
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{ curso.imagemUrl }}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ curso.cursoNome }}</h5>
+      <p class="card-text">{{ curso.descricao }}</p>
+      <a [routerLink]="['/home/curso/conteudos',curso.cursoId]" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+</div>
