@@ -17,6 +17,28 @@ export class ListaCursoComponent implements OnInit {
   };
 
   cursos: Curso[] = [];
+
+  cursosFiltrados: any = [];
+
+   private _filtroLista: string = '';
+
+   public get filtroLista(){
+     return this._filtroLista
+   }
+
+   public set filtroLista(value: string){
+    this._filtroLista = value;
+    this.cursosFiltrados = this.filtroLista ? this.filtrarCursos(this.filtroLista) : this.cursos;
+  }
+
+  filtrarCursos(filtrarPor: string): any{
+    filtrarPor = filtrarPor.toLocaleLowerCase();
+    return this.cursos.filter(
+      (cursos: {cursoNome:string;descricao:string}) => cursos.cursoNome.toLocaleLowerCase().indexOf(filtrarPor)!== -1 ||
+      cursos.descricao.toLocaleLowerCase().indexOf(filtrarPor)!== -1
+     );
+  }
+
   
   constructor(private cursoService: CursosService, private modalService: NgbModal, private toastr: ToastrService) { }
 
@@ -28,6 +50,8 @@ export class ListaCursoComponent implements OnInit {
     this.cursoService.obterTodos().subscribe(
       (resposta)=>{
         this.cursos = resposta;
+        
+        this.cursosFiltrados= this.cursos;
       },
       (error)=>{
         this.toastr.error('Ocorreu um erro', 'Atenção!');

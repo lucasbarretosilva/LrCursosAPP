@@ -20,8 +20,28 @@ export class ListaConteudosComponent implements OnInit {
   };
 
   conteudos: Conteudo[] = [];
-
   cursoId: any;
+
+
+  conteudosFiltrado: any = [];
+
+   private _filtroLista: string = '';
+
+   public get filtroLista(){
+     return this._filtroLista
+   }
+
+   public set filtroLista(value: string){
+    this._filtroLista = value;
+    this.conteudosFiltrado = this.filtroLista ? this.filtrarConteudo(this.filtroLista) : this.conteudos;
+  }
+
+  filtrarConteudo(filtrarPor: string): any{
+    filtrarPor = filtrarPor.toLocaleLowerCase();
+    return this.conteudos.filter(
+      (conteudo: {tituloAula:string}) => conteudo.tituloAula.toLocaleLowerCase().indexOf(filtrarPor)!== -1
+     );
+  }
 
   constructor(
     private conteudoService: ConteudoService,
@@ -47,6 +67,7 @@ export class ListaConteudosComponent implements OnInit {
     this.conteudoService.obterConteudosPorCurso(cursoId).subscribe(
       (resposta) => {
         this.conteudos = resposta;
+        this.conteudosFiltrado= this.conteudos;
       },
       (error) => {
         this.toastr.error('Ocorreu um erro', 'Atenção!');

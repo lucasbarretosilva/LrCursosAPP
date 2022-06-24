@@ -1,5 +1,13 @@
 <h4 class="mt-5">Conteúdos</h4>
 <hr>
+<div action="" class="form-inline">
+    <div class="form-group md-2">
+        <input class="form-control mb2-2"
+        placeholder="Buscar"
+        [(ngModel)]="filtroLista">
+    </div>
+</div>
+    <hr>
 <div class="container-botao-add">
     <button class="btn btn-secondary" (click)="abrirModal(modalSalvarConteudo)">Adicionar</button>
 </div>
@@ -11,8 +19,8 @@
             <th scope="col">Ações</th>
         </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let conteudo of conteudos">
+    <tbody  *ngIf="conteudos && conteudos.length">
+        <tr *ngFor="let conteudo of conteudosFiltrado">
 
             <td>{{ conteudo.tituloAula }}</td>
             <td>{{ conteudo.urlAula }}</td>
