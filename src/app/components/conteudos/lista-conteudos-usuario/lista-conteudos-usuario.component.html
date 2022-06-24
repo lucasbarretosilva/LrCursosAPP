@@ -13,9 +13,9 @@
         </tr>
     </thead>
     <tbody *ngIf="conteudos && conteudos.length">
-        <tr *ngFor="let conteudo of conteudosFiltrado">
+        <tr *ngFor="let conteudo of conteudosFiltrado; let i = index">
 
-            <td>{{ conteudo.tituloAula }}</td>
+            <td> #{{i+1}} - {{ conteudo.tituloAula }}</td>
             <td>
                 <a class="bi-play-circle-fill icone-" (click)="abrirModalAssistirAula(abrirModalAssistir,conteudo)"></a>
             </td>
