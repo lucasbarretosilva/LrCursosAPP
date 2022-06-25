@@ -18,6 +18,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Descrição</th>
+                <th scope="col">Duração (Horas)</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                 </td>
                 <td>{{ curso.cursoNome }}</td>
                 <td>{{ curso.descricao }}</td>
+                <td>{{ curso.duracao }}</td>
                 <td>
                     <a [routerLink]="['curso/editar',curso.cursoId]" class="icon icon-edit bi bi-pencil-square"></a>
                     <a (click)="abrirModal(modalConfirmacaoDeletar,curso.cursoId)"

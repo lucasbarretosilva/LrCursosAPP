@@ -1,6 +1,8 @@
-<div class="container">
-<div *ngFor="let curso of cursos">
-<div class="card" style="width: 18rem;">
+<!-- <div class="container">
+
+<div *ngFor="let curso of cursos" >
+  <div class="row">
+<div class="card" style="width: 18rem; margin-top: 2em;">
     <img class="card-img-top" src="{{ curso.imagemUrl }}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{ curso.cursoNome }}</h5>
@@ -9,4 +11,35 @@
     </div>
   </div>
 </div>
+</div>
+
+
+</div> -->
+<!-- 
+<div *ngFor="let curso of cursos">
+  
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{ curso.imagemUrl }}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{curso.cursoNome}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a [routerLink]="['/home/curso/conteudos',curso.cursoId]" class="btn btn-primary">Ver Aulas</a>
+  </div>
+</div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let curso of cursos">
+
+      <div class="card" style="width: 20rem; margin-top: 2em;">
+        <img class="card-img-top" style="width: 250px; height: 250px" src="{{ curso.imagemUrl }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ curso.cursoNome }}</h5>
+          <p class="card-text">{{ curso.descricao }}</p>
+          <a [routerLink]="['/home/curso/conteudos',curso.cursoId]" class="btn btn-secondary">Ver Aulas</a>
+        </div>
+
+    </div>
+  </div>
 </div>

@@ -23,6 +23,12 @@
                 </div>
                 </div>
                 <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Duração (Horas)</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm" formControlName="duracao" >
+                </div>
+                </div>
+                <div class="row mb-3">
                     <div class="col-12">
                         <button type="subimt" class="btn btn-secondary">Salvar</button>
                         <button type="button" class="btn btn-success" [routerLink]="['/curso/conteudos',id]" *ngIf="id">Conteúdos</button>

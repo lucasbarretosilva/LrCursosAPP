@@ -24,7 +24,8 @@ export class FormCursoComponent implements OnInit {
     this.formulario = new FormGroup({
       cursoNome: new FormControl(null),
       imagemUrl: new FormControl(null),
-      descricao: new FormControl(null),    
+      descricao: new FormControl(null),
+      duracao: new FormControl(null),     
     });
    }
 
