@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { ListaConteudosUsuarioComponent } from './components/conteudos/lista-conteudos-usuario/lista-conteudos-usuario.component';
 import { SafePipe } from './safe.pipe';
+import { CertificadoComponent } from './components/certificado/certificado.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SafePipe } from './safe.pipe';
     ListaConteudosComponent,
     HomeComponent,
     ListaConteudosUsuarioComponent,
-    SafePipe
+    SafePipe,
+    CertificadoComponent
   ],
   imports: [
     BrowserModule,
