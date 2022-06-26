@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Curso } from 'src/app/models/curso.model';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { Autenticacao } from 'src/app/models/autenticacao.model';
+import { AutenticacaoService } from 'src/app/services/autenticacao.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-lista-curso',
@@ -16,7 +20,15 @@ export class ListaCursoComponent implements OnInit {
     centered:true
   };
 
+  usuarioTeste: Autenticacao []=[];
+  usuario: any;
+  usuarios: Autenticacao[] = [];
+  autenticado: boolean = false;
   cursos: Curso[] = [];
+  public senhaDigitada: any;
+  public emailDigitado: any;
+  
+  
 
   cursosFiltrados: any = [];
 
@@ -40,10 +52,19 @@ export class ListaCursoComponent implements OnInit {
   }
 
   
-  constructor(private cursoService: CursosService, private modalService: NgbModal, private toastr: ToastrService) { }
+  constructor(private cursoService: CursosService, private modalService: NgbModal, private toastr: ToastrService,
+    private autenticacaoService: AutenticacaoService, private activatedRoute: ActivatedRoute,
+    private router: Router,
+    
+    ) {this.usuario = new FormGroup({
+      email: new FormControl(null),
+      senha: new FormControl(null),
+       
+    }); }
 
   ngOnInit(): void {
     this.obterTodos();
+    this.obterTodosUsuarios();
   }
 
   obterTodos(): void{
@@ -79,5 +100,40 @@ export class ListaCursoComponent implements OnInit {
       }
     )
   }
+
+  obterTodosUsuarios(): void{
+    this.autenticacaoService.obterTodosUsuarios().subscribe(
+      (resposta)=>{
+        this.usuarios = resposta;
+        this.usuarioTeste = this.usuario;
+        console.log(this.usuarios)
+        
+        
+       
+        
+      },
+      (error)=>{
+        this.toastr.error('Ocorreu um erro', 'Atenção!');
+      }
+    )
+  }
+
+  usuariosEncontrados = this.usuarios.filter(x=> x.Email == this.usuario.value.email.toString())
+  senhasEncontradas = this.usuarios.filter(x=> x.Senha == this.usuario.value.senha)
+
+  teste(){
+    console.log(this.usuarios);
+    console.log(this.usuario.value.email);
+    console.log(this.usuariosEncontrados);
+    console.log(this.senhasEncontradas);
+   
+
+
+  }
+  
+  
+  
+
+
 
 }
