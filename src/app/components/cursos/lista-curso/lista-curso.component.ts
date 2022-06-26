@@ -20,19 +20,30 @@ export class ListaCursoComponent implements OnInit {
     centered:true
   };
 
-  usuarioTeste: Autenticacao []=[];
-  usuario: any;
-  usuarios: Autenticacao[] = [];
+  usuarioAutenticado = JSON.parse(sessionStorage['usuario']) as Autenticacao;
   autenticado: boolean = false;
+  
   cursos: Curso[] = [];
   public senhaDigitada: any;
   public emailDigitado: any;
-  
-  
-
   cursosFiltrados: any = [];
 
-   private _filtroLista: string = '';
+  private _filtroLista: string = '';
+     
+  constructor(private cursoService: CursosService, 
+    private modalService: NgbModal, 
+    private toastr: ToastrService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    ) {
+  }
+
+  ngOnInit(): void {
+    if(this.usuarioAutenticado.liberado == true && this.usuarioAutenticado.isManager == true) {
+      this.autenticado = true;
+    } 
+    this.obterTodos();
+  }
 
    public get filtroLista(){
      return this._filtroLista
@@ -51,22 +62,6 @@ export class ListaCursoComponent implements OnInit {
      );
   }
 
-  
-  constructor(private cursoService: CursosService, private modalService: NgbModal, private toastr: ToastrService,
-    private autenticacaoService: AutenticacaoService, private activatedRoute: ActivatedRoute,
-    private router: Router,
-    
-    ) {this.usuario = new FormGroup({
-      email: new FormControl(null),
-      senha: new FormControl(null),
-       
-    }); }
-
-  ngOnInit(): void {
-    this.obterTodos();
-    this.obterTodosUsuarios();
-  }
-
   obterTodos(): void{
     this.cursoService.obterTodos().subscribe(
       (resposta)=>{
@@ -79,6 +74,7 @@ export class ListaCursoComponent implements OnInit {
       }
     )
   }
+
   deletar(id:number):void{
     this.cursoService.deletar(id).subscribe(
       ()=>{
@@ -100,40 +96,4 @@ export class ListaCursoComponent implements OnInit {
       }
     )
   }
-
-  obterTodosUsuarios(): void{
-    this.autenticacaoService.obterTodosUsuarios().subscribe(
-      (resposta)=>{
-        this.usuarios = resposta;
-        this.usuarioTeste = this.usuario;
-        console.log(this.usuarios)
-        
-        
-       
-        
-      },
-      (error)=>{
-        this.toastr.error('Ocorreu um erro', 'Atenção!');
-      }
-    )
-  }
-
-  usuariosEncontrados = this.usuarios.filter(x=> x.Email == this.usuario.value.email.toString())
-  senhasEncontradas = this.usuarios.filter(x=> x.Senha == this.usuario.value.senha)
-
-  teste(){
-    console.log(this.usuarios);
-    console.log(this.usuario.value.email);
-    console.log(this.usuariosEncontrados);
-    console.log(this.senhasEncontradas);
-   
-
-
-  }
-  
-  
-  
-
-
-
 }

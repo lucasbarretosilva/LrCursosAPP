@@ -1,3 +1,5 @@
+import { LoginComponent } from './components/login/login.component';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CertificadoComponent } from './components/certificado/certificado.component';
@@ -8,7 +10,9 @@ import { ListaCursoComponent } from './components/cursos/lista-curso/lista-curso
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  {path: '', component: ListaCursoComponent},
+  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'cursos', component: ListaCursoComponent},
   {path: 'curso/adicionar', component:FormCursoComponent},
   {path: 'curso/editar/:id', component:FormCursoComponent},
   {path: 'curso/conteudos/:cursoId', component: ListaConteudosComponent},

@@ -26,7 +26,11 @@ export class AutenticacaoService {
   } 
   
   atualizarStatus(c: Autenticacao): Observable<any> {
-    return this.http.put<Autenticacao>(`${this.url}/${c.Id}`, c, httpOptions);
+    return this.http.put<Autenticacao>(`${this.url}/${c.id}`, c, httpOptions);
   } 
+
+  obterUsuarioPorEmailSenha(email: string, senha: string): Observable<Autenticacao> {
+    return this.http.get<Autenticacao>(`${this.url}/${email}/${senha}`);
+  }
 
 }

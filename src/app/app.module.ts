@@ -17,6 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ListaConteudosUsuarioComponent } from './components/conteudos/lista-conteudos-usuario/lista-conteudos-usuario.component';
 import { SafePipe } from './safe.pipe';
 import { CertificadoComponent } from './components/certificado/certificado.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CertificadoComponent } from './components/certificado/certificado.compo
     HomeComponent,
     ListaConteudosUsuarioComponent,
     SafePipe,
-    CertificadoComponent
+    CertificadoComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

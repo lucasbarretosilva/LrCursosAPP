@@ -1,11 +1,9 @@
-
+<div *ngIf="autenticado">
     <h1>Cursos</h1>
     <hr>
     <div action="" class="form-inline">
         <div class="form-group md-2">
-            <input class="form-control mb2-2"
-            placeholder="Buscar"
-            [(ngModel)]="filtroLista">
+            <input class="form-control mb2-2" placeholder="Buscar" [(ngModel)]="filtroLista">
         </div>
     </div>
     <hr>
@@ -38,7 +36,11 @@
             </tr>
         </tbody>
     </table>
+</div>
 
+<div *ngIf="!autenticado">
+    <h1>Ops, você não tem acesso!</h1>
+</div>
 
 <ng-template #modalConfirmacaoDeletar let-modal>
     <div class="modal-header">
@@ -57,21 +59,3 @@
         <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Confirmar</button>
     </div>
 </ng-template>
-
-
-<form [formGroup]="usuario">
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label" >Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="senha">
-    </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="obterTodosUsuarios()">Submit</button>
-  </form>
