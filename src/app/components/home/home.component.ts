@@ -17,11 +17,24 @@ export class HomeComponent implements OnInit {
   conteudos: Conteudo[] = [];
   formulario: any;
 
+  usuarioAutenticado = this.getUsuario();
+  autenticado: boolean = false;
+
   constructor(private cursoService: CursosService, private modalService: NgbModal, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    if(this.usuarioAutenticado?.liberado == true) {
+      this.autenticado = true;
+    }
     this.cursoService.obterTodos().subscribe((resultado) => (this.cursos = resultado));
   }
 
+  getUsuario(){
+    const usuario = window.sessionStorage.getItem("usuario");
+    if(usuario != null){
+      return JSON.parse(usuario)
+    }
+    return null;
+  };
 
 }

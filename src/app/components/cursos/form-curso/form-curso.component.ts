@@ -14,7 +14,11 @@ export class FormCursoComponent implements OnInit {
   formulario: any;
   curso: Curso | undefined;
   id: any;
-  
+
+  usuarioAutenticado = this.getUsuario();
+  autenticado: boolean = false;
+  isManager: boolean = false;
+
   constructor(
     private cursosService: CursosService,
     private activatedRoute: ActivatedRoute,
@@ -30,6 +34,13 @@ export class FormCursoComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if(this.usuarioAutenticado?.liberado == true) {
+      this.autenticado = true;
+    } 
+    if(this.usuarioAutenticado?.isManager == true){
+      this.isManager = true;
+    }
+
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
       this.cursosService
@@ -57,5 +68,13 @@ export class FormCursoComponent implements OnInit {
       });
     }
   }
+
+  getUsuario(){
+    const usuario = window.sessionStorage.getItem("usuario");
+    if(usuario != null){
+      return JSON.parse(usuario)
+    }
+    return null;
+  };
 
 }

@@ -1,39 +1,45 @@
-<h4 class="mt-5">Conteúdos</h4>
-<hr>
-<div action="" class="form-inline">
-    <div class="form-group md-2">
-        <input class="form-control mb2-2"
-        placeholder="Buscar"
-        [(ngModel)]="filtroLista">
-    </div>
-</div>
+<app-header></app-header>
+
+<div *ngIf="autenticado && isManager" class="container">
+
+    <h4 class="mt-5">Conteúdos</h4>
     <hr>
-<div class="container-botao-add">
-    <button class="btn btn-secondary" (click)="abrirModal(modalSalvarConteudo)">Adicionar</button>
+    <div action="" class="form-inline">
+        <div class="form-group md-2">
+            <input class="form-control mb2-2" placeholder="Buscar" [(ngModel)]="filtroLista">
+        </div>
+    </div>
+    <hr>
+    <div class="container-botao-add">
+        <button class="btn btn-secondary" (click)="abrirModal(modalSalvarConteudo)">Adicionar</button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Url</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="conteudos && conteudos.length">
+            <tr *ngFor="let conteudo of conteudosFiltrado; let i = index">
+
+                <td>#{{i+1}} - {{ conteudo.tituloAula }}</td>
+                <td>{{ conteudo.urlAula }}</td>
+                <td>
+                    <a class="icon icon-edit bi bi-pencil-square"
+                        (click)="abrirModalEdicao(modalSalvarConteudo, conteudo)"></a>
+                    <a class="icon icon-delete bi bi-trash-fill"
+                        (click)="abrirModalDeletar(modalConfirmacaoDeletar,conteudo.conteudoId)"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Título</th>
-            <th scope="col">Url</th>
-            <th scope="col">Ações</th>
-        </tr>
-    </thead>
-    <tbody  *ngIf="conteudos && conteudos.length">
-        <tr *ngFor="let conteudo of conteudosFiltrado; let i = index">
 
-            <td>#{{i+1}} - {{ conteudo.tituloAula }}</td>
-            <td>{{ conteudo.urlAula }}</td>
-            <td>
-                <a class="icon icon-edit bi bi-pencil-square"
-                    (click)="abrirModalEdicao(modalSalvarConteudo, conteudo)"></a>
-                <a class="icon icon-delete bi bi-trash-fill"
-                    (click)="abrirModalDeletar(modalConfirmacaoDeletar,conteudo.conteudoId)"></a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
+<div *ngIf="!autenticado || !isManager">
+    <h1>Ops, você não tem acesso!</h1>
+</div>
 
 <ng-template #modalSalvarConteudo let-modal>
     <div class="modal-header">

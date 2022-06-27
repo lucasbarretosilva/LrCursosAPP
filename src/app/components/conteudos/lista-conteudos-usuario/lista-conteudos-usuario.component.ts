@@ -43,6 +43,9 @@ export class ListaConteudosUsuarioComponent implements OnInit {
      );
   }
 
+  usuarioAutenticado = this.getUsuario();
+  autenticado: boolean = false;
+
   constructor(
     private conteudoService: ConteudoService,
     private activatedRoute: ActivatedRoute,
@@ -57,6 +60,10 @@ export class ListaConteudosUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.usuarioAutenticado?.liberado == true) {
+      this.autenticado = true;
+    }
+
     this.activatedRoute.paramMap.subscribe((params) => {
       this.cursoId = params.get('cursoId');
       this.obterConteudosPorCurso(this.cursoId);
@@ -83,5 +90,14 @@ export class ListaConteudosUsuarioComponent implements OnInit {
       .result.then((resposta) => {
       });
   }
+
+  getUsuario(){
+    const usuario = window.sessionStorage.getItem("usuario");
+    if(usuario != null){
+      return JSON.parse(usuario)
+    }
+    return null;
+  };
+
 }
 

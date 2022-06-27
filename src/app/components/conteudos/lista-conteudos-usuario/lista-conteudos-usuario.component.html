@@ -1,49 +1,52 @@
-<h4 class="mt-5">Conteúdos</h4>
-<hr>
-<div action="" class="form-inline">
-    <div class="form-group md-2">
-        <input class="form-control mb2-2" placeholder="Buscar" [(ngModel)]="filtroLista">
+<app-header></app-header>
+
+<div *ngIf="autenticado" class="container">
+    <h4 class="mt-5">Conteúdos</h4>
+    <hr>
+    <div action="" class="form-inline">
+        <div class="form-group md-2">
+            <input class="form-control mb2-2" placeholder="Buscar" [(ngModel)]="filtroLista">
+        </div>
     </div>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Título</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="conteudos && conteudos.length">
+            <tr *ngFor="let conteudo of conteudosFiltrado; let i = index">
+
+                <td> #{{i+1}} - {{ conteudo.tituloAula }}</td>
+                <td>
+                    <a class="bi-play-circle-fill icone-"
+                        (click)="abrirModalAssistirAula(abrirModalAssistir,conteudo)"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container-botao-add">
+        <button class="btn btn-secondary btn-certificado" routerLink="/certificado">Obter Certificado</button>
+    </div>
+
+    <ng-template #abrirModalAssistir let-modal>
+        <div class="modal-header">
+            <h5 class="modal-title">Aula</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <iframe width="600" height="315" [src]="url | safe" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </ng-template>
 </div>
-<hr>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Título</th>
-        </tr>
-    </thead>
-    <tbody *ngIf="conteudos && conteudos.length">
-        <tr *ngFor="let conteudo of conteudosFiltrado; let i = index">
 
-            <td> #{{i+1}} - {{ conteudo.tituloAula }}</td>
-            <td>
-                <a class="bi-play-circle-fill icone-" (click)="abrirModalAssistirAula(abrirModalAssistir,conteudo)"></a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<div class="container-botao-add">
-    <button class="btn btn-secondary btn-certificado" routerLink="/certificado">Obter Certificado</button>
+<div *ngIf="!autenticado">
+    <h1>Ops, você não tem acesso!</h1>
 </div>
-
-<ng-template #abrirModalAssistir let-modal>
-    <div class="modal-header">
-        <h5 class="modal-title">Aula</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-            (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <iframe 
-            width="600" 
-            height="315" 
-            [src]="url | safe" 
-            title="YouTube video player" 
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-        ></iframe>
-    </div>
-</ng-template>

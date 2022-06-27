@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 
@@ -7,10 +7,18 @@ import html2canvas from 'html2canvas';
   templateUrl: './certificado.component.html',
   styleUrls: ['./certificado.component.scss']
 })
-export class CertificadoComponent {
+export class CertificadoComponent implements OnInit{
 
-
+  usuarioAutenticado = this.getUsuario();
+  autenticado: boolean = false;
+  
   constructor() { }
+
+  ngOnInit(): void {
+     if(this.usuarioAutenticado?.liberado == true) {
+      this.autenticado = true;
+    } 
+  }
 
   public exportHtmlToPDF(){
     let data = document.getElementById('certificado')!;
@@ -28,5 +36,13 @@ export class CertificadoComponent {
           doc.save('certificado.pdf');
       });
   }
+
+  getUsuario(){
+    const usuario = window.sessionStorage.getItem("usuario");
+    if(usuario != null){
+      return JSON.parse(usuario)
+    }
+    return null;
+  };
 
 }

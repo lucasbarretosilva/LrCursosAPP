@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
 
     this.autenticacaoService.obterUsuarioPorEmailSenha(email, senha).subscribe(
       (resposta)=>{
-        sessionStorage.setItem('usuario', JSON.stringify(resposta));
-        this.router.navigate(['cursos']);
+        window.sessionStorage.setItem('usuario', JSON.stringify(resposta));
+        this.router.navigate(['home']);
       },
       (error)=>{
         this.toastr.error('Ocorreu um erro', 'Atenção!');

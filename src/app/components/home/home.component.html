@@ -28,7 +28,9 @@
 </div>
 </div> -->
 
-<div class="container">
+<app-header></app-header>
+
+<div *ngIf="autenticado" class="container">
   <div class="row">
     <div class="col-md-4" *ngFor="let curso of cursos">
 
@@ -42,4 +44,8 @@
 
     </div>
   </div>
+</div>
+
+<div *ngIf="!autenticado">
+  <h1>Ops, você não tem acesso!</h1>
 </div>

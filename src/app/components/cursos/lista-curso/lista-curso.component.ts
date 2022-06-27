@@ -20,8 +20,9 @@ export class ListaCursoComponent implements OnInit {
     centered:true
   };
 
-  usuarioAutenticado = JSON.parse(sessionStorage['usuario']) as Autenticacao;
+  usuarioAutenticado = this.getUsuario();
   autenticado: boolean = false;
+  isManager: boolean = false;
   
   cursos: Curso[] = [];
   public senhaDigitada: any;
@@ -39,9 +40,12 @@ export class ListaCursoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.usuarioAutenticado.liberado == true && this.usuarioAutenticado.isManager == true) {
+    if(this.usuarioAutenticado?.liberado == true) {
       this.autenticado = true;
     } 
+    if(this.usuarioAutenticado?.isManager == true){
+      this.isManager = true;
+    }
     this.obterTodos();
   }
 
@@ -96,4 +100,12 @@ export class ListaCursoComponent implements OnInit {
       }
     )
   }
+
+  getUsuario(){
+    const usuario = window.sessionStorage.getItem("usuario");
+    if(usuario != null){
+      return JSON.parse(usuario)
+    }
+    return null;
+  };
 }

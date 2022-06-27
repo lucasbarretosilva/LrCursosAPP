@@ -1,4 +1,6 @@
-<div *ngIf="autenticado">
+<app-header></app-header>
+<div *ngIf="autenticado && isManager" class="container">
+
     <h1>Cursos</h1>
     <hr>
     <div action="" class="form-inline">
@@ -38,7 +40,7 @@
     </table>
 </div>
 
-<div *ngIf="!autenticado">
+<div *ngIf="!autenticado || !isManager">
     <h1>Ops, você não tem acesso!</h1>
 </div>
 
