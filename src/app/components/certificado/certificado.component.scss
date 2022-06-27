@@ -44,7 +44,7 @@ body {
   position: relative;
   width: 800px;
   height: 600px;
-  background-color: #618597;
+  background-color: #c03d55;
   padding: 30px;
   color: #333;
   font-family: 'Open Sans', sans-serif;
@@ -87,7 +87,7 @@ body {
 
     .pm-certificate-block {
       width: 650px;
-      height: 200px;
+      height: 100px;
       position: relative;
       left: 50%;
       margin-left: -325px;
@@ -108,11 +108,20 @@ body {
       }
     }
 
+    h1{
+      font-size: 90px;
+    }
+
+    h5{
+      font-size: 25px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
     .pm-certificate-body {
       padding: 20px;
 
       .pm-name-text {
-        font-size: 20px;
+        font-size: 40px;
       }
     }
 
@@ -152,5 +161,9 @@ body {
       bottom: -105px;
     }
   }
+}
+
+img{
+  width: 120px;
 }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Autenticacao } from 'src/app/models/autenticacao.model';
 
 @Component({
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
   autenticado: boolean = false;
   isManager:boolean = false;
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
     if(this.usuarioAutenticado?.liberado == true) {
@@ -30,5 +31,10 @@ export class HeaderComponent implements OnInit {
     }
     return null;
   };
+
+  modalSair(){
+    window.sessionStorage.removeItem("usuario");
+    this.router.navigate(['login']);
+  }
 
 }

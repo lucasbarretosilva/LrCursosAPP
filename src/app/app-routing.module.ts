@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'curso/conteudos/:cursoId', component: ListaConteudosComponent},
   {path: 'home', component:HomeComponent },
   {path: 'home/curso/conteudos/:cursoId', component: ListaConteudosUsuarioComponent},
-  {path: 'certificado', component: CertificadoComponent}
+  {path: 'certificado/:id', component: CertificadoComponent}
 ];
 
 @NgModule({

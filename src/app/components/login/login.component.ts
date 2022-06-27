@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['home']);
       },
       (error)=>{
-        this.toastr.error('Ocorreu um erro', 'Atenção!');
+        this.toastr.error('Verifique o email e a senha.', 'Atenção!');
       }
     )
   }

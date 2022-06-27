@@ -28,7 +28,7 @@
     </table>
 
     <div class="container-botao-add">
-        <button class="btn btn-secondary btn-certificado" routerLink="/certificado">Obter Certificado</button>
+        <button class="btn btn-secondary btn-certificado" [routerLink]="['/certificado',cursoId]">Obter Certificado</button>
     </div>
 
     <ng-template #abrirModalAssistir let-modal>
