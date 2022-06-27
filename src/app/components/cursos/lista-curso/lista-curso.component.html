@@ -8,7 +8,7 @@
     </div>
     <hr>
     <div class="container-botao-add">
-        <button class="btn btn-secondary" routerLink="curso/adicionar">Adicionar</button>
+        <button class="btn btn-secondary" routerLink="/curso/adicionar">Adicionar</button>
     </div>
     <table class="table">
         <thead class="thead-dark">
@@ -29,7 +29,7 @@
                 <td>{{ curso.descricao }}</td>
                 <td>{{ curso.duracao }}</td>
                 <td>
-                    <a [routerLink]="['curso/editar',curso.cursoId]" class="icon icon-edit bi bi-pencil-square"></a>
+                    <a [routerLink]="['/curso/editar',curso.cursoId]" class="icon icon-edit bi bi-pencil-square"></a>
                     <a (click)="abrirModal(modalConfirmacaoDeletar,curso.cursoId)"
                         class=" icon icon-delete bi bi-trash-fill"></a>
                 </td>
