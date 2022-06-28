@@ -13,22 +13,26 @@
         <thead>
             <tr>
                 <th scope="col">Título</th>
+                <th scope="col">Ver Aular</th>
+                <th scope="col">Assistido</th>
             </tr>
         </thead>
         <tbody *ngIf="conteudos && conteudos.length">
             <tr *ngFor="let conteudo of conteudosFiltrado; let i = index">
-
                 <td> #{{i+1}} - {{ conteudo.tituloAula }}</td>
                 <td>
                     <a class="bi-play-circle-fill icone icon-play"
                         (click)="abrirModalAssistirAula(abrirModalAssistir,conteudo)"></a>
                 </td>
+                <div *ngIf="mostrarBotaoFinalizar(conteudo.conteudoId)">
+                    <button (click)="finalizarAula(conteudo.conteudoId)">Finalizar</button>
+                </div>         
             </tr>
         </tbody>
     </table>
 
     <div class="container-botao-add">
-        <button class="btn btn-secondary btn-certificado" [routerLink]="['/certificado',cursoId]">Obter
+        <button class="btn btn-secondary btn-certificado" [routerLink]="['/certificado',cursoId]" [disabled]="habilitarBotaoObterCertificado()">Obter
             Certificado</button>
     </div>
 
