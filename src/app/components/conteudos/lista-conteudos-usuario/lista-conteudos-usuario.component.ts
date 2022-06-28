@@ -151,9 +151,9 @@ export class ListaConteudosUsuarioComponent implements OnInit {
 
   habilitarBotaoObterCertificado():boolean {
     if(this.conteudos.length == this.conteudosVistosPeloUsuario.length){
-      return true;
+      return false;
      }
-     return false;
+     return true;
   }
 
 }

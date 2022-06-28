@@ -16,7 +16,7 @@ a{
     padding: 2px;
 }
 
-#modal-sair{
-    width: 350px !important;
-    height: 1000px !important;
+.close{
+    width: 50px !important;
 }
+

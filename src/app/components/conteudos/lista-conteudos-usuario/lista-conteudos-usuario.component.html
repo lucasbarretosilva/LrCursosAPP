@@ -14,7 +14,6 @@
             <tr>
                 <th scope="col">Título</th>
                 <th scope="col">Ver Aular</th>
-                <th scope="col">Assistido</th>
             </tr>
         </thead>
         <tbody *ngIf="conteudos && conteudos.length">
@@ -24,9 +23,11 @@
                     <a class="bi-play-circle-fill icone icon-play"
                         (click)="abrirModalAssistirAula(abrirModalAssistir,conteudo)"></a>
                 </td>
+                <td>
                 <div *ngIf="mostrarBotaoFinalizar(conteudo.conteudoId)">
-                    <button (click)="finalizarAula(conteudo.conteudoId)">Finalizar</button>
-                </div>         
+                    <button class="btn btn-primary btn-finalizar" (click)="finalizarAula(conteudo.conteudoId)">Finalizar Aula</button>
+                </div>  
+            </td>       
             </tr>
         </tbody>
     </table>
