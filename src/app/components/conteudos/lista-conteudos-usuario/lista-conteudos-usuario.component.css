@@ -15,3 +15,18 @@
 .btn-certificado{
     width: 150px !important;
 }
+
+#close{
+    width: 50px !important;
+}
+
+.modal-body{
+    align-self: center
+}
+
+.icon-play{
+    font-size: 30px;
+    cursor:pointer;
+    color: #f82249;
+}
+

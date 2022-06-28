@@ -20,7 +20,7 @@
 
                 <td> #{{i+1}} - {{ conteudo.tituloAula }}</td>
                 <td>
-                    <a class="bi-play-circle-fill icone-"
+                    <a class="bi-play-circle-fill icone icon-play"
                         (click)="abrirModalAssistirAula(abrirModalAssistir,conteudo)"></a>
                 </td>
             </tr>
@@ -28,19 +28,20 @@
     </table>
 
     <div class="container-botao-add">
-        <button class="btn btn-secondary btn-certificado" [routerLink]="['/certificado',cursoId]">Obter Certificado</button>
+        <button class="btn btn-secondary btn-certificado" [routerLink]="['/certificado',cursoId]">Obter
+            Certificado</button>
     </div>
 
     <ng-template #abrirModalAssistir let-modal>
         <div class="modal-header">
             <h5 class="modal-title">Aula</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close"
                 (click)="modal.dismiss('Cross click')">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body">
-            <iframe width="600" height="315" [src]="url | safe" title="YouTube video player" frameborder="0"
+            <iframe width="600" height="300" [src]="url | safe" title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
         </div>

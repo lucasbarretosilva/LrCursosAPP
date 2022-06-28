@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Autenticacao } from 'src/app/models/autenticacao.model';
 
 @Component({
@@ -9,11 +10,16 @@ import { Autenticacao } from 'src/app/models/autenticacao.model';
 })
 export class HeaderComponent implements OnInit {
 
+  modalOptions: NgbModalOptions = {
+    size: 'md',
+    centered: true,
+  };
+
   usuarioAutenticado = this.getUsuario();
   autenticado: boolean = false;
   isManager:boolean = false;
 
-  constructor( private router: Router) { }
+  constructor( private router: Router,  private modalService: NgbModal,) { }
 
   ngOnInit(): void {
     if(this.usuarioAutenticado?.liberado == true) {
@@ -32,9 +38,16 @@ export class HeaderComponent implements OnInit {
     return null;
   };
 
-  modalSair(){
-    window.sessionStorage.removeItem("usuario");
-    this.router.navigate(['login']);
+  modalSair(htmlModal: any) {
+
+    this.modalService
+      .open(htmlModal, this.modalOptions)
+      .result.then((resposta) => {
+        if(resposta){
+          window.sessionStorage.removeItem("usuario");
+          this.router.navigate(['login']);
+        }
+      });
   }
 
 }

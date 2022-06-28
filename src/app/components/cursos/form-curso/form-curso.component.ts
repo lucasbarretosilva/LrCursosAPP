@@ -59,7 +59,8 @@ export class FormCursoComponent implements OnInit {
       curso.cursoId = this.id;
 
       this.cursosService.atualizar(curso).subscribe(() => {
-        this.router.navigate(['curso']);
+        this.toastr.success('Dados atualizados', 'Sucesso!');
+        this.router.navigate(['cursos']);
       });
     } else {
       this.cursosService.salvar(curso).subscribe((resposta) => {

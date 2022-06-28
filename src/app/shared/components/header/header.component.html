@@ -13,14 +13,14 @@
                 <a class="nav-link" routerLink="/cursos">Gerenciamento de cursos</a>
             </li>
             <li class="nav-item active" *ngIf="autenticado">
-                <a class="btn" (click)="modalSair()">Sair</a>
+                <a class="btn" (click)="modalSair(modalLogoff)">Sair</a>
             </li>
         </ul>
     </div>
 </nav>
 
 
-<!-- <ng-template #modalLogoff let-modal>
+ <ng-template #modalLogoff let-modal id="modal-sair">
     <div class="modal-header">
         <h5 class="modal-title">Atenção</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"
@@ -29,11 +29,11 @@
         </button>
     </div>
     <div class="modal-body">
-        Você tem certeza que deseja deletar este registro?
+        Você tem certeza que deseja Sair?
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"
             (click)="modal.dismiss('Cross click')">Fechar</button>
         <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Confirmar</button>
     </div>
-</ng-template> -->
+</ng-template> 
