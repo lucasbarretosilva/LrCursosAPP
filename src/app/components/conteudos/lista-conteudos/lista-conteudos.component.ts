@@ -3,7 +3,7 @@ import { ConteudoService } from './../../../services/conteudo.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -55,8 +55,8 @@ export class ListaConteudosComponent implements OnInit {
   ) {
     this.formulario = new FormGroup({
       conteudoId: new FormControl(0),
-      tituloAula: new FormControl(null),
-      urlAula: new FormControl(null),
+      tituloAula: new FormControl(null, Validators.required),
+      urlAula: new FormControl(null, Validators.required),
     });
   }
 
@@ -130,6 +130,7 @@ export class ListaConteudosComponent implements OnInit {
   }
 
   enviarFormulario(): void {
+   if(this.formulario.valid){
     const conteudo: Conteudo = this.formulario.value;
     conteudo.cursoId = parseInt(this.cursoId);
 
@@ -146,6 +147,9 @@ export class ListaConteudosComponent implements OnInit {
         this.obterConteudosPorCurso(this.cursoId);
       });
     }
+   }else{
+    this.toastr.error('Preencha todos os campos', 'Atenção!');
+   }
   }
 
   getUsuario(){
