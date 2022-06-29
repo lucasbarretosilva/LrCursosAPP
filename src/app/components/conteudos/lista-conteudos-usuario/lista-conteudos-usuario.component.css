@@ -14,6 +14,8 @@
 
 .btn-certificado{
     width: 150px !important;
+    background-color: #f82249;
+    border: none !important;
 }
 
 #close{
@@ -39,4 +41,5 @@
 .btn-finalizar {
     width: 120px !important;
 }
+
 

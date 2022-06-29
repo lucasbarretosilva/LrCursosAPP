@@ -33,7 +33,7 @@
     </table>
 
     <div class="container-botao-add">
-        <button class="btn btn-secondary btn-certificado" [routerLink]="['/certificado',cursoId]" [disabled]="habilitarBotaoObterCertificado()">Obter
+        <button class="btn btn-danger btn-certificado" [routerLink]="['/certificado',cursoId]" *ngIf="habilitarBotaoObterCertificado()">Obter
             Certificado</button>
     </div>
 
@@ -53,6 +53,6 @@
     </ng-template>
 </div>
 
-<div *ngIf="!autenticado">
-    <h1>Ops, você não tem acesso!</h1>
+<div class="acesso-negado" *ngIf="!autenticado">
+    <p>Ops, você não tem acesso!</p>
 </div>

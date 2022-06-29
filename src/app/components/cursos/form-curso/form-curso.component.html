@@ -2,38 +2,41 @@
 
 <div *ngIf="autenticado && isManager" class="container">
     <div class="row">
-        <div class="col-12 border border-light p-5 shadow mt-5" >
+        <div class="col-12 border border-light p-5 shadow mt-5">
             <h4>Detalhes do Curso</h4>
             <hr>
             <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()" class="mt-5">
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Nome do Curso</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" formControlName="cursoNome" />
+                        <input type="text" class="form-control form-control-sm" formControlName="cursoNome" />
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-3">
+                <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Link da Imagem</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" formControlName="imagemUrl" />
+                        <input type="text" class="form-control form-control-sm" formControlName="imagemUrl" />
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Descrição</label>
                     <div class="col-sm-10">
-                    <textarea type="text" class="form-control form-control-sm" formControlName="descricao" rows="4"></textarea>
-                </div>
+                        <textarea type="text" class="form-control form-control-sm" formControlName="descricao"
+                            rows="4"></textarea>
+                    </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Duração (Horas)</label>
+                    <label class="col-sm-2 col-form-label">Duração
+                        (Horas)</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm" formControlName="duracao" >
-                </div>
+                        <input type="number" class="form-control form-control-sm" formControlName="duracao">
+                    </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-12">
                         <button type="subimt" class="btn btn-secondary">Salvar</button>
-                        <button type="button" class="btn btn-success" [routerLink]="['/curso/conteudos',id]" *ngIf="id">Conteúdos</button>
+                        <button type="button" class="btn btn-success" [routerLink]="['/curso/conteudos',id]"
+                            *ngIf="id">Conteúdos</button>
                         <button type="button" class="btn btn-primary" routerLink="/cursos">Voltar</button>
                     </div>
                 </div>
@@ -42,6 +45,6 @@
     </div>
 </div>
 
-<div *ngIf="!autenticado || !isManager">
-    <h1>Ops, você não tem acesso!</h1>
+<div class="acesso-negado" *ngIf="!autenticado || !isManager">
+    <p>Ops, você não tem acesso!</p>
 </div>
