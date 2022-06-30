@@ -40,8 +40,8 @@ export class CertificadoComponent implements OnInit{
       
       html2canvas(data).then(canvas => {
           
-          let docWidth = (canvas.width * 94) / 240;
-          let docHeight = (canvas.height * 92) / 240;
+          let docWidth = (canvas.width * 86)/ 240;
+          let docHeight = (canvas.height * 83) / 240;
           
           const contentDataURL = canvas.toDataURL('image/png')
           let doc = new jsPDF('l', 'mm', 'a4');
