@@ -11,3 +11,9 @@
 .icon-edit{
     color: #132f59d9;
 }
+
+.close{
+    border: none;
+    background-color: #fff;
+    font-size: 30px;
+}

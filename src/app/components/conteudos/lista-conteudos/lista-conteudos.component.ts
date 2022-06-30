@@ -137,14 +137,14 @@ export class ListaConteudosComponent implements OnInit {
     if (conteudo.conteudoId && conteudo.conteudoId > 0) {
       this.conteudoService.atualizar(conteudo).subscribe(() => {
         this.modalService.dismissAll();
-        this.toastr.success('Registro Atualizado', 'Sucesso!');
         this.obterConteudosPorCurso(this.cursoId);
+        location.reload();
       });
     } else {
       this.conteudoService.salvar(conteudo).subscribe(() => {
         this.modalService.dismissAll();
-        this.toastr.success('Registro Salvo', 'Sucesso!');
         this.obterConteudosPorCurso(this.cursoId);
+        location.reload();
       });
     }
    }else{
